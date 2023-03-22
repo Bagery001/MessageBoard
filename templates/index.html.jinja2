@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Message Board</title>
+  </head>
+  <body>
+    <h1>Web Message Board</h1>
+    <div>
+      <h2>Submit a new message</h2>
+      <form method="post" action="{{ url_for('add_post') }}">
+        <textarea name="content" rows="5" cols="50"></textarea><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div>
+      <h2>Messages</h2>
+      <ul>
+        {% for message in messages %}
+        <li>{{ message[1] }} - {{ message[0] }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
