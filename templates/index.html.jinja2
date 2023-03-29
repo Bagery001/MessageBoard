@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Web Message Board</title>
-  </head>
-  <body>
-    <h1>Web Message Board</h1>
-    <div>
-      <h2>Submit a new message</h2>
-      <form method="post" action="{{ url_for('add_post') }}">
-        <textarea name="content" rows="5" cols="50"></textarea><br>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-    <div>
-      <h2>Messages</h2>
-      <ul>
-        {% for message in messages %}
-        <li>{{ message[1] }} - {{ message[0] }}</li>
+<head>
+    <title>Web留言板</title>
+</head>
+<body>
+    <h1>Web留言板</h1>
+    <h2>输入新留言</h2>
+    <form action="{{ url_for('add_post') }}" method="post">
+        <textarea name="message" rows="5" cols="30"></textarea><br>
+        <input type="submit" value="提交">
+    </form>
+    <br>
+    <hr>
+    <h2>历史留言</h2>
+    <ul>
+        {% for message in messages[::-1] %}
+        <li>{{ message[0] }} - {{ message[1] }}</li>
         {% endfor %}
-      </ul>
-    </div>
-  </body>
+    </ul>
+</body>
 </html>
